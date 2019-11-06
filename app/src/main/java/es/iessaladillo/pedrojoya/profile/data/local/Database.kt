@@ -1,11 +1,11 @@
 package es.iessaladillo.pedrojoya.profile.data.local
 
 import es.iessaladillo.pedrojoya.profile.R
-import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
+//import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
 
 object Database {
 
-    private val avatars = listOf(
+   /* private val avatars = listOf(
         Avatar(1, R.drawable.pikachu, "Pikachu"),
         Avatar(2, R.drawable.bulbasur, "Bulbasur"),
         Avatar(3, R.drawable.chikorita, "Chikorita"),
@@ -19,6 +19,6 @@ object Database {
 
     fun queryDefaultAvatar(): Avatar = avatars[0]
 
-    fun queryAllAvatars(): List<Avatar> = ArrayList(avatars)
+    fun queryAllAvatars(): List<Avatar> = ArrayList(avatars)*/
 
 }

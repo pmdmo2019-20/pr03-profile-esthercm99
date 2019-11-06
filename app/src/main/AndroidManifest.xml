@@ -14,7 +14,8 @@
         android:fullBackupContent="@xml/backup_descriptor">
         <activity
             android:name=".ui.main.ProfileActivity"
-            android:label="@string/profile_title">
+            android:label="@string/profile_title"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +25,7 @@
         <activity
             android:name=".ui.avatar.AvatarActivity"
             android:label="@string/avatar_title"
+            android:screenOrientation="fullSensor"
             android:parentActivityName=".ui.main.ProfileActivity"/>
     </application>
 

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/margin">
+
+    <RelativeLayout android:id="@+id/imageAvatar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pikachu"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/avatar"/>
+
+        <TextView
+            android:id="@+id/myImageViewText"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/avatar"
+            android:layout_margin="1dp"
+            android:gravity="center"
+            android:text="Pikachu"
+            android:background="@color/avatar_label_background"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/lblName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/lblName"
+        app:layout_constraintTop_toBottomOf="@id/imageAvatar"/>
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hintName"
+        app:layout_constraintTop_toBottomOf="@id/lblName"/>
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/lblEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtName"
+        android:text="@string/lblEmail" />
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/iconEmail"
+        app:layout_constraintTop_toBottomOf="@id/lblEmail"
+        android:hint="@string/hintEmail"/>
+
+    <ImageButton
+        android:id="@+id/iconEmail"
+        android:layout_width="@dimen/icon_dimen"
+        android:layout_height="@dimen/icon_dimen"
+        app:layout_constraintTop_toTopOf="@id/txtEmail"
+        app:layout_constraintBottom_toBottomOf="@id/txtEmail"
+        app:layout_constraintRight_toRightOf="@id/lblEmail"
+        android:src="@drawable/ic_email_24dp" />
+
+    <!-- PHONE -->
+    <TextView
+        android:id="@+id/lblPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintLeft_toRightOf="@id/lblEmail"
+        app:layout_constraintTop_toBottomOf="@id/txtName"
+        android:text="@string/lblPhone"/>
+    <EditText
+        android:id="@+id/txtPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.2"
+        app:layout_constraintLeft_toLeftOf="@id/lblPhone"
+        app:layout_constraintRight_toLeftOf="@id/iconPhone"
+        app:layout_constraintTop_toBottomOf="@id/lblPhone"
+        android:hint="@string/hintPhone"/>
+
+    <ImageButton
+        android:id="@+id/iconPhone"
+        android:layout_width="@dimen/icon_dimen"
+        android:layout_height="@dimen/icon_dimen"
+        android:src="@drawable/ic_call_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/txtPhone"
+        app:layout_constraintRight_toRightOf="@id/lblPhone"
+        android:baselineAlignBottom="@+id/iconEmail"
+        app:layout_constraintTop_toTopOf="@+id/txtPhone" />
+
+    <!-- ADRESS -->
+    <TextView
+        android:id="@+id/lblAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/txtEmail"
+        android:text="@string/lblAddress"/>
+
+    <EditText
+        android:id="@+id/txtAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hintAddress"
+        app:layout_constraintRight_toLeftOf="@id/iconAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblAddress" />
+
+    <ImageButton
+        android:id="@+id/iconAddress"
+        android:layout_width="@dimen/icon_dimen"
+        android:layout_height="@dimen/icon_dimen"
+        android:src="@drawable/ic_map_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/txtAddress"
+        app:layout_constraintRight_toRightOf="@id/lblAddress"
+        android:baselineAlignBottom="@+id/iconEmail"
+        app:layout_constraintTop_toTopOf="@+id/txtAddress" />
+
+    <!-- WEB -->
+    <TextView
+        android:id="@+id/lblWeb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/txtAddress"
+        android:text="@string/lblWeb"/>
+
+    <EditText
+        android:id="@+id/txtWeb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hintWeb"
+        app:layout_constraintRight_toLeftOf="@id/iconWeb"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblWeb" />
+
+    <ImageButton
+        android:id="@+id/iconWeb"
+        android:layout_width="@dimen/icon_dimen"
+        android:layout_height="@dimen/icon_dimen"
+        android:src="@drawable/ic_web_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/txtWeb"
+        app:layout_constraintRight_toRightOf="@id/lblWeb"
+        android:baselineAlignBottom="@+id/iconAddress"
+        app:layout_constraintTop_toTopOf="@+id/txtWeb" />
+
+    <TextView
+        android:id="@+id/lblRequired"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/txtWeb"
+        android:text="@string/lblRequired"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

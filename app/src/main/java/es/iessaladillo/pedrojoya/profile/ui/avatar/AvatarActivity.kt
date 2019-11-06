@@ -13,14 +13,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import es.iessaladillo.pedrojoya.profile.R
 import es.iessaladillo.pedrojoya.profile.data.local.Database
-import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
-import kotlinx.android.synthetic.main.avatar_activity.*
+//import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
+//import kotlinx.android.synthetic.main.avatar_activity.*
 
 class AvatarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.avatar_activity)
+        //setContentView(R.layout.avatar_activity)
         // TODO
     }
 
