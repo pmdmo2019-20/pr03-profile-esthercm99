@@ -4,47 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/margin">
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/margin"
+    tools:ignore="MissingDefaultResource">
 
     <RelativeLayout android:id="@+id/imageAvatar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent">
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:src="@drawable/pikachu"
             android:scaleType="centerCrop"
             android:contentDescription="@string/avatar"/>
 
         <TextView
             android:id="@+id/myImageViewText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="35dp"
+            android:layout_alignStart="@id/avatar"
+            android:layout_alignEnd="@+id/avatar"
             android:layout_alignBottom="@+id/avatar"
-            android:layout_margin="1dp"
+            android:background="@color/avatar_label_background"
             android:gravity="center"
             android:text="Pikachu"
-            android:background="@color/avatar_label_background"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 
 
     <TextView
         android:id="@+id/lblName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
         android:text="@string/lblName"
-        app:layout_constraintTop_toBottomOf="@id/imageAvatar"/>
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"/>
     <EditText
         android:id="@+id/txtName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hintName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
         app:layout_constraintTop_toBottomOf="@id/lblName"/>
 
     <!-- Email -->
@@ -52,16 +55,15 @@
         android:id="@+id/lblEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
-        app:layout_constraintWidth_percent="0.7"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintWidth_percent="0.35"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
         app:layout_constraintTop_toBottomOf="@id/txtName"
         android:text="@string/lblEmail" />
     <EditText
         android:id="@+id/txtEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
         app:layout_constraintRight_toLeftOf="@id/iconEmail"
         app:layout_constraintTop_toBottomOf="@id/lblEmail"
         android:hint="@string/hintEmail"/>
@@ -80,7 +82,6 @@
         android:id="@+id/lblPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
         app:layout_constraintWidth_percent="0.3"
         app:layout_constraintLeft_toRightOf="@id/lblEmail"
         app:layout_constraintTop_toBottomOf="@id/txtName"
@@ -89,7 +90,6 @@
         android:id="@+id/txtPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.2"
         app:layout_constraintLeft_toLeftOf="@id/lblPhone"
         app:layout_constraintRight_toLeftOf="@id/iconPhone"
         app:layout_constraintTop_toBottomOf="@id/lblPhone"
@@ -101,16 +101,17 @@
         android:layout_height="@dimen/icon_dimen"
         android:src="@drawable/ic_call_24dp"
         app:layout_constraintBottom_toBottomOf="@id/txtPhone"
-        app:layout_constraintRight_toRightOf="@id/lblPhone"
+        app:layout_constraintRight_toRightOf="parent"
         android:baselineAlignBottom="@+id/iconEmail"
         app:layout_constraintTop_toTopOf="@+id/txtPhone" />
 
     <!-- ADRESS -->
     <TextView
         android:id="@+id/lblAddress"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtEmail"
         android:text="@string/lblAddress"/>
 
@@ -119,8 +120,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hintAddress"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
         app:layout_constraintRight_toLeftOf="@id/iconAddress"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lblAddress" />
 
     <ImageButton
@@ -129,16 +130,17 @@
         android:layout_height="@dimen/icon_dimen"
         android:src="@drawable/ic_map_24dp"
         app:layout_constraintBottom_toBottomOf="@id/txtAddress"
-        app:layout_constraintRight_toRightOf="@id/lblAddress"
+        app:layout_constraintRight_toRightOf="parent"
         android:baselineAlignBottom="@+id/iconEmail"
         app:layout_constraintTop_toTopOf="@+id/txtAddress" />
 
     <!-- WEB -->
     <TextView
         android:id="@+id/lblWeb"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtAddress"
         android:text="@string/lblWeb"/>
 
@@ -147,8 +149,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hintWeb"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
         app:layout_constraintRight_toLeftOf="@id/iconWeb"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lblWeb" />
 
     <ImageButton
@@ -157,15 +159,16 @@
         android:layout_height="@dimen/icon_dimen"
         android:src="@drawable/ic_web_24dp"
         app:layout_constraintBottom_toBottomOf="@id/txtWeb"
-        app:layout_constraintRight_toRightOf="@id/lblWeb"
+        app:layout_constraintRight_toRightOf="parent"
         android:baselineAlignBottom="@+id/iconAddress"
         app:layout_constraintTop_toTopOf="@+id/txtWeb" />
 
     <TextView
         android:id="@+id/lblRequired"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/imageAvatar"
         app:layout_constraintTop_toBottomOf="@id/txtWeb"
         android:text="@string/lblRequired"/>
 
