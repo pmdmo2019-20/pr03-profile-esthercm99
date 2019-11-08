@@ -1,3 +1,5 @@
 package es.iessaladillo.pedrojoya.profile.data.local.entity
 
-// TODO: Avatar class
+class Avatar(private var id: Int, private var image: Int, private var name: String) {
+
+}

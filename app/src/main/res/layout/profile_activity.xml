@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/margin"
-    tools:ignore="MissingDefaultResource">
+                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                    xmlns:tools="http://schemas.android.com/tools"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:orientation="vertical"
+                                                    android:layout_margin="@dimen/margin"
+                                                    android:id="@+id/view">
 
     <RelativeLayout android:id="@+id/imageAvatar"
         android:layout_height="wrap_content"
@@ -46,7 +46,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hintName"
-        app:layout_constraintTop_toBottomOf="@id/lblName"/>
+        android:maxLength="35"
+        android:inputType="textPersonName"
+        android:nextFocusDown="@id/txtEmail"
+        android:selectAllOnFocus="true"
+        app:layout_constraintTop_toBottomOf="@id/lblName">
+        <requestFocus/>
+    </EditText>
 
     <!-- Email -->
     <TextView
@@ -54,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
-        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintWidth_percent="0.6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtName"
         android:text="@string/lblEmail" />
@@ -62,15 +68,21 @@
         android:id="@+id/txtEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxLength="25"
+        android:selectAllOnFocus="true"
+        android:inputType="textEmailAddress"
+        android:nextFocusDown="@id/txtPhone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/iconEmail"
         app:layout_constraintTop_toBottomOf="@id/lblEmail"
-        android:hint="@string/hintEmail"/>
+        android:hint="@string/hintEmail">
+    </EditText>
 
     <ImageButton
         android:id="@+id/iconEmail"
         android:layout_width="@dimen/icon_dimen"
         android:layout_height="@dimen/icon_dimen"
+        android:background="@null"
         app:layout_constraintTop_toTopOf="@id/txtEmail"
         app:layout_constraintBottom_toBottomOf="@id/txtEmail"
         app:layout_constraintRight_toRightOf="@id/lblEmail"
@@ -82,15 +94,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
-        app:layout_constraintWidth_percent="0.3"
+        android:text="@string/lblPhone"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/lblEmail"
         app:layout_constraintTop_toBottomOf="@id/txtName"
-        android:text="@string/lblPhone"/>
+        app:layout_constraintWidth_percent="0.4" />
     <EditText
         android:id="@+id/txtPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.2"
+        android:selectAllOnFocus="true"
+        android:inputType="phone"
+        android:nextFocusDown="@id/txtAddress"
         app:layout_constraintLeft_toLeftOf="@id/lblPhone"
         app:layout_constraintRight_toLeftOf="@id/iconPhone"
         app:layout_constraintTop_toBottomOf="@id/lblPhone"
@@ -100,6 +115,7 @@
         android:id="@+id/iconPhone"
         android:layout_width="@dimen/icon_dimen"
         android:layout_height="@dimen/icon_dimen"
+        android:background="@null"
         android:src="@drawable/ic_call_24dp"
         app:layout_constraintBottom_toBottomOf="@id/txtPhone"
         app:layout_constraintRight_toRightOf="@id/lblPhone"
@@ -120,6 +136,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hintAddress"
+        android:selectAllOnFocus="true"
+        android:inputType="text"
+        android:nextFocusDown="@id/txtWeb"
         app:layout_constraintRight_toLeftOf="@id/iconAddress"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lblAddress" />
@@ -128,6 +147,7 @@
         android:id="@+id/iconAddress"
         android:layout_width="@dimen/icon_dimen"
         android:layout_height="@dimen/icon_dimen"
+        android:background="@null"
         android:src="@drawable/ic_map_24dp"
         app:layout_constraintBottom_toBottomOf="@id/txtAddress"
         app:layout_constraintRight_toRightOf="@id/lblAddress"
@@ -148,6 +168,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hintWeb"
+        android:selectAllOnFocus="true"
+        android:inputType="textUri"
         app:layout_constraintRight_toLeftOf="@id/iconWeb"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lblWeb" />
@@ -156,6 +178,7 @@
         android:id="@+id/iconWeb"
         android:layout_width="@dimen/icon_dimen"
         android:layout_height="@dimen/icon_dimen"
+        android:background="@null"
         android:src="@drawable/ic_web_24dp"
         app:layout_constraintBottom_toBottomOf="@id/txtWeb"
         app:layout_constraintRight_toRightOf="@id/lblWeb"

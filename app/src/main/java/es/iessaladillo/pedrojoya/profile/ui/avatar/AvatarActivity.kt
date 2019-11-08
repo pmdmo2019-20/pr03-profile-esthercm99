@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import es.iessaladillo.pedrojoya.profile.R
 import es.iessaladillo.pedrojoya.profile.data.local.Database
-//import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
+import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
 //import kotlinx.android.synthetic.main.avatar_activity.*
 
 class AvatarActivity : AppCompatActivity() {
