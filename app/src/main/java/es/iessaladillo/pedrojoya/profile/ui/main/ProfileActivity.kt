@@ -1,21 +1,28 @@
 package es.iessaladillo.pedrojoya.profile.ui.main
 
+import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
+import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import es.iessaladillo.pedrojoya.profile.R
+import es.iessaladillo.pedrojoya.profile.data.local.Database
+import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
+import es.iessaladillo.pedrojoya.profile.ui.avatar.AvatarActivity
 import es.iessaladillo.pedrojoya.profile.utils.hideSoftKeyboard
-//import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
 import kotlinx.android.synthetic.main.profile_activity.*
 //import kotlinx.android.synthetic.main.profile_avatar.*
 //import kotlinx.android.synthetic.main.profile_form.*
 
+const val RC_AVATAR_SELECTION = 2
+
 class ProfileActivity : AppCompatActivity() {
-    private lateinit var viewModel: ProfileActivityViewModel
+    private var avatarImg: Avatar = Database.queryDefaultAvatar()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +30,30 @@ class ProfileActivity : AppCompatActivity() {
         setupViews()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+        if (resultCode == RESULT_OK && requestCode == RC_AVATAR_SELECTION && intent != null) {
+            extractResult(intent)
+            showDate()
+        }
+    }
+
+    private fun extractResult(intent: Intent) {
+        if (!intent.hasExtra(AvatarActivity.EXTRA_AVATAR)) {
+            throw RuntimeException(
+                "AvatarActivity must receive an avatar in result intent")
+        }
+        avatarImg = intent.getParcelableExtra(AvatarActivity.EXTRA_AVATAR)
+    }
+
+    private fun showDate() {
+        viewModel.showToast(String.format("Avatar: %s", avatarImg.getName()))
+    }
+
     private fun setupViews() {
         createView()
         callBtnIcons()
+        callAvatar()
     }
 
     private fun createView() {
@@ -75,5 +103,14 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.clickbtnAddress(iconAddress, txtAddress)
         viewModel.clickbtnUrl(iconWeb, txtWeb)
         view.hideSoftKeyboard()
+    }
+    private fun callAvatar() {
+        imageAvatar.setOnClickListener{navigateToAvatarActivity()}
+        view.hideSoftKeyboard()
+    }
+
+    private fun navigateToAvatarActivity() {
+        val intent = AvatarActivity.newIntent(applicationContext, viewModel.obtainAvatarBundle())
+        startActivityForResult(intent, RC_AVATAR_SELECTION)
     }
 }

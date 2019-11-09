@@ -1,4 +1,4 @@
-package es.iessaladillo.pedrojoya.profile.data.local.user
+package es.iessaladillo.pedrojoya.profile.data.local.entity
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
