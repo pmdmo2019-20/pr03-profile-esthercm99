@@ -16,18 +16,17 @@
             android:id="@+id/avatar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/pikachu"
+            android:background="@drawable/pikachu"
             android:scaleType="centerCrop"
             android:contentDescription="@string/avatar"/>
 
         <TextView
-            android:id="@+id/myImageViewText"
+            android:id="@+id/lblAvatar"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_alignBottom="@+id/avatar"
             android:layout_margin="1dp"
             android:gravity="center"
-            android:text="Pikachu"
             android:background="@color/avatar_label_background"
             android:textColor="@color/white"/>
     </RelativeLayout>

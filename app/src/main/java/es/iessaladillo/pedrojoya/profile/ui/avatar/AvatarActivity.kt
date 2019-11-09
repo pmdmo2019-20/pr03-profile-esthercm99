@@ -9,39 +9,39 @@ import android.view.MenuItem
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import es.iessaladillo.pedrojoya.profile.R
 import es.iessaladillo.pedrojoya.profile.data.local.Database
+import es.iessaladillo.pedrojoya.profile.data.local.DatabaseApp
 import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
+import es.iessaladillo.pedrojoya.profile.data.local.entity.Contact
+import es.iessaladillo.pedrojoya.profile.ui.main.ProfileActivity
+import es.iessaladillo.pedrojoya.profile.ui.main.ProfileActivityViewModel
+import es.iessaladillo.pedrojoya.profile.ui.main.ProfileActivityViewModelFactory
+import es.iessaladillo.pedrojoya.profile.utils.toast
 import kotlinx.android.synthetic.main.avatar_activity.*
 import kotlinx.android.synthetic.main.profile_activity.*
 
+
+
+const val RC_AVATAR_SELECTION = 1
+
 class AvatarActivity : AppCompatActivity() {
 
-    lateinit var avatarImg: Avatar
-    private lateinit var viewModel: AvatarActivityViewModel
+    private var avatar: Avatar = DatabaseApp.queryUser().avatar
+    private lateinit var viewModel: ProfileActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.avatar_activity)
-        createView()
-        getIntentData()
-    }
 
-    private fun getIntentData() {
-        if (intent == null || !intent.hasExtra(EXTRA_AVATAR)) {
-            throw RuntimeException(
-                "DateSelectionActivity needs to receive day, month and year as extras")
-        }
-        avatarImg = intent.getParcelableExtra(EXTRA_AVATAR)
-    }
+        val factory = ProfileActivityViewModelFactory(this.application, savedInstanceState)
+        viewModel = ViewModelProvider(this, factory).get(ProfileActivityViewModel::class.java)
 
-
-    private fun createView() {
-        val factory = AvatarActivityViewModelFactory(this.application)
-        viewModel = ViewModelProvider(this, factory).get(AvatarActivityViewModel::class.java)
+        checkboxs()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,9 +51,100 @@ class AvatarActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mnuSelect) {
+            DatabaseApp.setAvatar(avatar)
+            //viewModel.avatarImg = DatabaseApp.queryUser().avatar
+            startActivity(Intent(applicationContext, ProfileActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun checkboxs() {
+        clickCheckbox(chkBulbasur)
+        clickCheckbox(chkChikorita)
+        clickCheckbox(chkCubone)
+        clickCheckbox(chkFeebas)
+        clickCheckbox(chkGiratina)
+        clickCheckbox(chkGyarados)
+        clickCheckbox(chkJigglypuff)
+        clickCheckbox(chkPachirisu)
+        clickCheckbox(chkPikachu)
+    }
+    private fun clickCheckbox(chk: CheckBox) {
+        chk.setOnClickListener{oneCheck(chk)}
+    }
+    private fun oneCheck(chk: CheckBox) {
+        // Pikachu:
+        if(chkPikachu.equals(chk)) {
+            chkPikachu.isChecked = true
+            avatar = Database.queryAllAvatars()[0]
+        } else {
+            chkPikachu.isChecked = false
+        }
+
+        // Bulbasur:
+        if(chkBulbasur.equals(chk)) {
+            chkBulbasur.isChecked = true
+            avatar = Database.queryAllAvatars()[1]
+        } else {
+            chkBulbasur.isChecked = false
+        }
+
+        // Chikorita:
+        if(chkChikorita.equals(chk)) {
+            chkChikorita.isChecked = true
+            avatar = Database.queryAllAvatars()[2]
+        } else {
+            chkChikorita.isChecked = false
+        }
+
+        // Cubone:
+        if(chkCubone.equals(chk)) {
+            chkCubone.isChecked = true
+            avatar = Database.queryAllAvatars()[3]
+        } else {
+            chkCubone.isChecked = false
+        }
+
+        // Feebas:
+        if(chkFeebas.equals(chk)) {
+            chkFeebas.isChecked = true
+            avatar = Database.queryAllAvatars()[4]
+        } else {
+            chkFeebas.isChecked = false
+        }
+
+        // Girantina:
+        if(chkGiratina.equals(chk)) {
+            chkGiratina.isChecked = true
+            avatar = Database.queryAllAvatars()[5]
+        } else {
+            chkGiratina.isChecked = false
+        }
+
+        // Gyarados:
+        if(chkGyarados.equals(chk)) {
+            chkGyarados.isChecked = true
+            avatar = Database.queryAllAvatars()[6]
+        } else {
+            chkGyarados.isChecked = false
+        }
+
+        // Jigglypuff:
+        if(chkJigglypuff.equals(chk)) {
+            chkJigglypuff.isChecked = true
+            avatar = Database.queryAllAvatars()[7]
+        } else {
+            chkJigglypuff.isChecked = false
+        }
+
+        // Pachirisu:
+        if(chkPachirisu.equals(chk)) {
+            chkPachirisu.isChecked = true
+            avatar = Database.queryAllAvatars()[8]
+        } else {
+            chkPachirisu.isChecked = false
+        }
     }
 
     companion object {
@@ -63,6 +154,3 @@ class AvatarActivity : AppCompatActivity() {
             .putExtras(bundleOf(EXTRA_AVATAR to avatar))
     }
 }
-
-
-

@@ -7,91 +7,93 @@
     android:layout_margin="@dimen/margin"
     android:id="@+id/viewAvatar">
 
+    <!-- ROW Nº1 -->
     <CheckBox
-        android:id="@+id/img1"
+        android:id="@+id/chkPikachu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="end"
         android:checked="true"
         android:background="@drawable/pikachu"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/img2"
-        app:layout_constraintBottom_toTopOf="@id/img4"
+        app:layout_constraintRight_toLeftOf="@id/chkCubone"
+        app:layout_constraintBottom_toTopOf="@id/chkBulbasur"
         app:layout_constraintTop_toTopOf="parent"/>
     <CheckBox
-        android:id="@+id/img2"
+        android:id="@+id/chkCubone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/cubone"
-        app:layout_constraintLeft_toRightOf="@id/img1"
-        app:layout_constraintRight_toLeftOf="@id/img3"
-        app:layout_constraintBottom_toTopOf="@id/img5"
+        app:layout_constraintLeft_toRightOf="@id/chkPikachu"
+        app:layout_constraintRight_toLeftOf="@id/chkGyarados"
+        app:layout_constraintBottom_toTopOf="@id/chkFeebas"
         app:layout_constraintTop_toTopOf="parent"/>
     <CheckBox
-        android:id="@+id/img3"
+        android:id="@+id/chkGyarados"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gyarados"
-        app:layout_constraintLeft_toRightOf="@id/img2"
+        app:layout_constraintLeft_toRightOf="@id/chkCubone"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/img6"
+        app:layout_constraintBottom_toTopOf="@id/chkJigglypuff"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- ROW Nº2 -->
     <CheckBox
-        android:id="@+id/img4"
+        android:id="@+id/chkBulbasur"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bulbasur"
-        app:layout_constraintTop_toBottomOf="@id/img1"
+        app:layout_constraintTop_toBottomOf="@id/chkPikachu"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/img7"
-        app:layout_constraintRight_toLeftOf="@id/img5"/>
+        app:layout_constraintBottom_toTopOf="@id/chkChikorita"
+        app:layout_constraintRight_toLeftOf="@id/chkFeebas"/>
     <CheckBox
-        android:id="@+id/img5"
+        android:id="@+id/chkFeebas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/feebas"
-        app:layout_constraintRight_toLeftOf="@id/img6"
-        app:layout_constraintBottom_toTopOf="@id/img8"
-        app:layout_constraintLeft_toRightOf="@id/img1"
-        app:layout_constraintTop_toBottomOf="@id/img2"/>
+        app:layout_constraintRight_toLeftOf="@id/chkJigglypuff"
+        app:layout_constraintBottom_toTopOf="@id/chkGiratina"
+        app:layout_constraintLeft_toRightOf="@id/chkPikachu"
+        app:layout_constraintTop_toBottomOf="@id/chkCubone"/>
     <CheckBox
-        android:id="@+id/img6"
+        android:id="@+id/chkJigglypuff"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/jigglypuff"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/img9"
-        app:layout_constraintLeft_toRightOf="@id/img5"
-        app:layout_constraintTop_toBottomOf="@id/img3"/>
+        app:layout_constraintBottom_toTopOf="@id/chkPachirisu"
+        app:layout_constraintLeft_toRightOf="@id/chkFeebas"
+        app:layout_constraintTop_toBottomOf="@id/chkGyarados"/>
 
+    <!-- ROW Nº3 -->
     <CheckBox
-        android:id="@+id/img7"
+        android:id="@+id/chkChikorita"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/chikorita"
-        app:layout_constraintTop_toBottomOf="@id/img4"
-        app:layout_constraintRight_toLeftOf="@id/img8"
+        app:layout_constraintTop_toBottomOf="@id/chkBulbasur"
+        app:layout_constraintRight_toLeftOf="@id/chkGiratina"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
     <CheckBox
-        android:id="@+id/img8"
+        android:id="@+id/chkGiratina"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/giratina"
-        app:layout_constraintRight_toLeftOf="@id/img9"
-        app:layout_constraintTop_toBottomOf="@id/img5"
+        app:layout_constraintRight_toLeftOf="@id/chkPachirisu"
+        app:layout_constraintTop_toBottomOf="@id/chkFeebas"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/img7"/>
+        app:layout_constraintLeft_toRightOf="@id/chkChikorita"/>
     <CheckBox
-        android:id="@+id/img9"
+        android:id="@+id/chkPachirisu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/pachirisu"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/img8"
-        app:layout_constraintTop_toBottomOf="@id/img6"/>
+        app:layout_constraintLeft_toRightOf="@id/chkGiratina"
+        app:layout_constraintTop_toBottomOf="@id/chkJigglypuff"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

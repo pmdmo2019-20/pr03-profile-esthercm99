@@ -1,5 +1,9 @@
 package es.iessaladillo.pedrojoya.profile.data.local.entity
 
-class Avatar(private var id: Int, private var image: Int, private var name: String) {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+class Avatar(var id: Int, var image: Int, var name: String) : Parcelable {
 
 }

@@ -1,21 +1,31 @@
 package es.iessaladillo.pedrojoya.profile.ui.main
 import android.app.Application
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import android.view.View
-import android.widget.Button
+import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
-import androidx.core.app.ActivityCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import es.iessaladillo.pedrojoya.profile.data.local.user.Contact
+import es.iessaladillo.pedrojoya.profile.data.local.Database
+import es.iessaladillo.pedrojoya.profile.data.local.DatabaseApp
+import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
+import es.iessaladillo.pedrojoya.profile.data.local.entity.Contact
 import es.iessaladillo.pedrojoya.profile.utils.*
 
 
-class ProfileActivityViewModel(application: Application, name: String, email: String, phone: String, address: String, web: String) : ViewModel() {
-    var contact: Contact = Contact(name, email, phone, address, web)
-    val app = application
+class ProfileActivityViewModel(private val app: Application, private val state: Bundle?) : ViewModel() {
+
+    var avatarImg: Avatar = DatabaseApp.queryUser().avatar
+    var user: Contact = DatabaseApp.queryUser()
+
+    fun obtainAvatarBundle(): Bundle {
+        var bundle = Bundle()
+        bundle.putParcelable("EXTRA_AVATAR", user.avatar)
+        return bundle
+    }
 
     fun isEmptyInformation(text: EditText): Boolean {
         var isEmpty = false
