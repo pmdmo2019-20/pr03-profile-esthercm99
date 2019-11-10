@@ -9,21 +9,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import es.iessaladillo.pedrojoya.profile.R
 import es.iessaladillo.pedrojoya.profile.data.local.Database
 import es.iessaladillo.pedrojoya.profile.data.local.DatabaseApp
 import es.iessaladillo.pedrojoya.profile.data.local.entity.Avatar
 import es.iessaladillo.pedrojoya.profile.data.local.entity.Contact
 import es.iessaladillo.pedrojoya.profile.utils.*
 
+const val EXTRA_AVATAR = "EXTRA_AVATAR"
 
-class ProfileActivityViewModel(private val app: Application, private val state: Bundle?) : ViewModel() {
+class ProfileActivityViewModel(private val app: Application) : ViewModel() {
 
     var avatarImg: Avatar = DatabaseApp.queryUser().avatar
     var user: Contact = DatabaseApp.queryUser()
 
     fun obtainAvatarBundle(): Bundle {
-        var bundle = Bundle()
-        bundle.putParcelable("EXTRA_AVATAR", user.avatar)
+        val bundle = Bundle()
+        bundle.putParcelable(EXTRA_AVATAR, user.avatar)
         return bundle
     }
 
@@ -31,13 +33,13 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
         var isEmpty = false
         if(text.text.toString().isEmpty()) {
             isEmpty = true
-            text.error = "Empty text"
+            text.error = app.getString(R.string.msg_EmptyText)
         }
         return isEmpty
     }
     fun isValidPhone(text: EditText): Boolean {
         if(!text.text.toString().isValidPhone()) {
-            text.error = "Invalid phone"
+            text.error = app.getString(R.string.msg_InvalidPhone)
             return false
         } else {
             return true
@@ -45,7 +47,7 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
     }
     fun isValidEmail(text: EditText): Boolean {
         if(!text.text.toString().isValidEmail()) {
-            text.error = "Invalid email"
+            text.error = app.getString(R.string.msg_InvalidEmail)
             return false
         } else {
             return true
@@ -53,7 +55,7 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
     }
     fun isValidUrl(text: EditText): Boolean {
         if(!text.text.toString().isValidUrl()) {
-            text.error = "Invalid url"
+            text.error = app.getString(R.string.msg_InvalidURL)
             return false
         } else {
             return true
@@ -78,7 +80,7 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
             if(isActivityAvailable(app.applicationContext, newViewUriIntent(Uri.parse(text.text.toString())))){
                 app.applicationContext.startActivity(Intent.createChooser(newViewUriIntent(Uri.parse(text.text.toString())), "Navegar ").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             } else {
-                showToast("There is no application to perform the action")
+                showToast(app.getString(R.string.noAPP))
             }
         }
     }
@@ -87,7 +89,7 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
             if(isActivityAvailable(app.applicationContext, newDialIntent(text.text.toString()))) {
                 app.applicationContext.startActivity(Intent.createChooser(newDialIntent(text.text.toString()), "Llamar a ").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             } else {
-                showToast("There is no application to perform the action")
+                showToast(app.getString(R.string.noAPP))
             }
         }
     }
@@ -96,7 +98,7 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
             if(isActivityAvailable(app.applicationContext, newSearchInMapIntent(text.text.toString()))) {
                 app.applicationContext.startActivity(Intent.createChooser(newSearchInMapIntent(text.text.toString()), "Ir al mapa de  ").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             } else {
-                showToast("There is no application to perform the action")
+                showToast(app.getString(R.string.noAPP))
             }
         }
     }
@@ -105,7 +107,7 @@ class ProfileActivityViewModel(private val app: Application, private val state: 
             if(isActivityAvailable(app.applicationContext, newEmailIntent(text.text.toString()))) {
                 app.applicationContext.startActivity(Intent.createChooser(newEmailIntent(text.text.toString()), "Email ").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             } else {
-                showToast("There is no application to perform the action")
+                showToast(app.getString(R.string.noAPP))
             }
         }
     }

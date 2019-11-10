@@ -6,8 +6,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class ProfileActivityViewModelFactory(val application: Application, val state: Bundle?) : ViewModelProvider.Factory {
+class ProfileActivityViewModelFactory(val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return ProfileActivityViewModel(application, state) as T
+        return ProfileActivityViewModel(application) as T
     }
 }

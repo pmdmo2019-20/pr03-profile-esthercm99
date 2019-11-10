@@ -28,14 +28,15 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile_activity)
 
-        val factory = ProfileActivityViewModelFactory(this.application, savedInstanceState)
+        val factory = ProfileActivityViewModelFactory(this.application)
         viewModel = ViewModelProvider(this, factory).get(ProfileActivityViewModel::class.java)
+
         showDate()
         setupViews()
     }
 
     private fun showDate() {
-        avatar.setBackgroundResource(viewModel.user.avatar.image)
+        avatar.setImageDrawable(getDrawable(viewModel.user.avatar.image))
         lblAvatar.text = viewModel.user.avatar.name
         txtName.setText(viewModel.user.name)
         txtEmail.setText(viewModel.user.email)
@@ -57,7 +58,7 @@ class ProfileActivity : AppCompatActivity() {
         if (item.itemId == R.id.mnuSave) {
             if(isAllInformationCompleted() && isAllInformationValid()) {
                 save()
-                viewModel.showToast("User saved successfully")
+                viewModel.showToast(getString(R.string.SavedSuccessfully))
             }
             return true
         }

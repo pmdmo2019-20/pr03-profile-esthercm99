@@ -16,4 +16,10 @@
     <string name="hintWeb">(url)</string>
     <string name="lblRequired">(*) Required</string>
     <string name="avatar_select">Select an avatar</string>
+    <string name="SavedSuccessfully">User saved successfully</string>
+    <string name="msg_EmptyText">Empty text</string>
+    <string name="msg_InvalidPhone">Invalid phone</string>
+    <string name="msg_InvalidEmail">Invalid email</string>
+    <string name="msg_InvalidURL">Invalid url</string>
+    <string name="noAPP">There is no application to perform the action</string>
 </resources>

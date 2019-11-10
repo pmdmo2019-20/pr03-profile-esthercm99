@@ -25,22 +25,13 @@ import es.iessaladillo.pedrojoya.profile.utils.toast
 import kotlinx.android.synthetic.main.avatar_activity.*
 import kotlinx.android.synthetic.main.profile_activity.*
 
-
-
-const val RC_AVATAR_SELECTION = 1
-
 class AvatarActivity : AppCompatActivity() {
 
     private var avatar: Avatar = DatabaseApp.queryUser().avatar
-    private lateinit var viewModel: ProfileActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.avatar_activity)
-
-        val factory = ProfileActivityViewModelFactory(this.application, savedInstanceState)
-        viewModel = ViewModelProvider(this, factory).get(ProfileActivityViewModel::class.java)
-
         checkboxs()
     }
 
@@ -48,17 +39,16 @@ class AvatarActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.avatar_activity, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mnuSelect) {
             DatabaseApp.setAvatar(avatar)
-            //viewModel.avatarImg = DatabaseApp.queryUser().avatar
             startActivity(Intent(applicationContext, ProfileActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)
     }
 
+    // CHECKBOXS:
     private fun checkboxs() {
         clickCheckbox(chkBulbasur)
         clickCheckbox(chkChikorita)
